@@ -1,8 +1,10 @@
 body{
-    background-color:aqua
+    background-color:rgb(115, 251, 147)
 }
 h1{
-    color:black;
-    font-style:italic;
-
+    color:rgb(1, 32, 12);
+    font-style: normal;
+}
+.camaleao{
+    width: 50%;
 }
