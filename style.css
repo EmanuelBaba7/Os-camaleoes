@@ -3,8 +3,10 @@ body{
 }
 h1{
     color:rgb(1, 32, 12);
+    font-weight: bold;
     font-style: normal;
 }
 .camaleao{
     width: 50%;
+    text-align: center;
 }
