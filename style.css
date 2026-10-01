@@ -16,3 +16,9 @@ h1{
     width: 50%;
     text-align: center;
 }
+.lista {
+    text-align: left;
+    font-style: normal;
+    text-decoration: overline;
+    color: rgb(0, 43, 6);
+}
