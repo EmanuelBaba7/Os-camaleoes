@@ -15,18 +15,13 @@ h1{
     color: rgb(0, 43, 6);
 }
 
-.Camaleao {
-    width: 600px;
-    height: 400px;
-    object-fit: cover;
-}
-
-.camaleao-como-muda-de-cor-e-outras-curiosidades-sobre-as-especies,
-.2408203-retrato-de-camaleao-velado-gratis-foto,
-.Jackson's_Chameleon444.jpg,
-.Calumma_Parsonii_Ste_Marie_Madagascar,
-.images.jpg {
+img {
     width: 300px;
     height: 200px;
     object-fit: cover;
+}
+
+.camaleao {
+    width: 600px;
+    height: 400px;
 }
