@@ -7,15 +7,26 @@ h1{
     font-style: normal;
 }
 
-.camaleao{
-    width: 50%;
-    text-align: center;
-}    
-
 
 .lista {
     text-align: left;
     font-style: normal;
     text-decoration: overline;
     color: rgb(0, 43, 6);
+}
+
+.camaleao {
+    width: 600px;
+    height: 400px;
+    object-fit: cover;
+}
+
+.pantera,
+.iemen,
+.jack,
+.parson,
+.pigmeu {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
 }
