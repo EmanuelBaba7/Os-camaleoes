@@ -25,3 +25,12 @@ img {
     width: 600px;
     height: 400px;
 }
+.lista a {
+    color: #287a35;
+    text-decoration: none;
+}
+
+.lista a:hover {
+    color: #74b82a;
+    text-decoration: underline;
+}
