@@ -96,4 +96,196 @@
     <li><a href="https://en.wikipedia.org/wiki/Palleon" target="_blank">Palleon</a></li>
 </ul>
 </p>
+    <section id="quiz">
+  <h2>Quiz dos Camaleões</h2>
+  <p>Teste seus conhecimentos sobre esses répteis!</p>
+
+  <div id="pergunta"></div>
+  <div id="alternativas"></div>
+  <p id="resultado"></p>
+
+  <button id="proximo" hidden>Próxima pergunta ➜</button>
+  <button id="reiniciar" hidden>Jogar novamente 🔄</button>
+</section>
+
+<style>
+  #quiz {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 25px;
+    background: #e8f5e9;
+    border: 3px solid #388e3c;
+    border-radius: 18px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: #1b5e20;
+  }
+
+  #quiz h2 {
+    font-size: 28px;
+  }
+
+  #alternativas {
+    display: grid;
+    gap: 10px;
+    margin: 20px 0;
+  }
+
+  #alternativas button,
+  #quiz > button {
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #43a047;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  #alternativas button:hover,
+  #quiz > button:hover {
+    background: #2e7d32;
+  }
+
+  #alternativas button:disabled {
+    cursor: default;
+    opacity: 0.8;
+  }
+
+  #resultado {
+    font-weight: bold;
+    font-size: 18px;
+  }
+</style>
+
+<script>
+  const perguntas = [
+    {
+      pergunta: "1. Por que os camaleões mudam de cor?",
+      opcoes: [
+        "A) Apenas para se esconder",
+        "B) Para comunicação e controle da temperatura",
+        "C) Porque estão sempre com frio",
+        "D) Para ficarem invisíveis"
+      ],
+      correta: 1
+    },
+    {
+      pergunta: "2. Qual parte do corpo usam para capturar insetos?",
+      opcoes: [
+        "A) As patas traseiras",
+        "B) A cauda",
+        "C) A língua comprida",
+        "D) As orelhas"
+      ],
+      correta: 2
+    },
+    {
+      pergunta: "3. Como muitos camaleões movimentam os olhos?",
+      opcoes: [
+        "A) Conseguem movimentá-los independentemente",
+        "B) Só conseguem olhar para frente",
+        "C) Não conseguem mover os olhos",
+        "D) Precisam virar o corpo inteiro"
+      ],
+      correta: 0
+    },
+    {
+      pergunta: "4. Onde vive a maioria das espécies de camaleões?",
+      opcoes: [
+        "A) Na Antártida",
+        "B) No fundo do mar",
+        "C) Principalmente na África e em Madagascar",
+        "D) Apenas na Europa"
+      ],
+      correta: 2
+    },
+    {
+      pergunta: "5. Todos os camaleões botam ovos?",
+      opcoes: [
+        "A) Sim, todos",
+        "B) Não, algumas espécies dão à luz filhotes vivos",
+        "C) Nenhum bota ovos",
+        "D) Só os camaleões verdes"
+      ],
+      correta: 1
+    }
+  ];
+
+  let indice = 0;
+  let pontos = 0;
+  let respondeu = false;
+
+  const perguntaEl = document.getElementById("pergunta");
+  const alternativasEl = document.getElementById("alternativas");
+  const resultadoEl = document.getElementById("resultado");
+  const proximoBtn = document.getElementById("proximo");
+  const reiniciarBtn = document.getElementById("reiniciar");
+
+  function mostrarPergunta() {
+    respondeu = false;
+    resultadoEl.textContent = "";
+    proximoBtn.hidden = true;
+    reiniciarBtn.hidden = true;
+
+    const atual = perguntas[indice];
+    perguntaEl.innerHTML = `<h3>${atual.pergunta}</h3>`;
+    alternativasEl.innerHTML = "";
+
+    atual.opcoes.forEach((opcao, i) => {
+      const botao = document.createElement("button");
+      botao.textContent = opcao;
+      botao.addEventListener("click", () => verificarResposta(i));
+      alternativasEl.appendChild(botao);
+    });
+  }
+
+  function verificarResposta(escolha) {
+    if (respondeu) return;
+    respondeu = true;
+
+    const correta = perguntas[indice].correta;
+    const botoes = alternativasEl.querySelectorAll("button");
+
+    botoes.forEach((botao, i) => {
+      botao.disabled = true;
+
+      if (i === correta) {
+        botao.style.background = "#2e7d32";
+      } else if (i === escolha) {
+        botao.style.background = "#c62828";
+      }
+    });
+
+    if (escolha === correta) {
+      pontos++;
+      resultadoEl.textContent = "✅ Acertou, monstrão! 🦎";
+    } else {
+      resultadoEl.textContent =
+        "❌ Quase! A resposta certa é: " +
+        perguntas[indice].opcoes[correta];
+    }
+
+    if (indice < perguntas.length - 1) {
+      proximoBtn.hidden = false;
+    } else {
+      resultadoEl.textContent +=
+        ` Resultado final: ${pontos} de ${perguntas.length} pontos!`;
+      reiniciarBtn.hidden = false;
+    }
+  }
+
+  proximoBtn.addEventListener("click", () => {
+    indice++;
+    mostrarPergunta();
+  });
+
+  reiniciarBtn.addEventListener("click", () => {
+    indice = 0;
+    pontos = 0;
+    mostrarPergunta();
+  });
+
+  mostrarPergunta();
+</script>
 </html>
