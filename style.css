@@ -34,3 +34,11 @@ img {
     color: #74b82a;
     text-decoration: underline;
 }
+
+footer {
+    background-color: #234d20;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+}
